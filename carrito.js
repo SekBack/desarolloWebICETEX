@@ -6,10 +6,8 @@ class Carrito {
 
 
     AgregarItem(id) {
-
-
+        console.log(productos)
         this.itemsSeleccionados.push(this.productos[id]);
-        let precioTotal;
         let result = this.itemsSeleccionados.reduce((acc, item) => {
             const obj = acc.find(o => o.id === item.id);
             if (obj) {
@@ -27,12 +25,15 @@ class Carrito {
     }
 
     EliminarItem(id) {
-        this.itemsSeleccionados.forEach((producto, index, arr) => {
+        this.itemsSeleccionados.forEach((producto, index) => {
             if (producto.id === id) {
-                arr.splice(index, 1)
+                this.itemsSeleccionados.splice(index, 1)
+                productos[id-1].cantidad=1; //  fue necesario incluir estas variables para resetear el contador de cantidad y precio total del producto
+                productos[id-1].precioTotalProducto=0;
             }
         }
         )
+        
         this.MostrarItems();
     }
 
@@ -40,7 +41,7 @@ class Carrito {
         let productosHTML = ""
         this.itemsSeleccionados.forEach((productoCarrito) =>
             productosHTML += `                        
-            <div class="row itemsCarrito">
+            <div class="row itemsCarrito border-bottom">
             <div class="col-2">
                 ${productoCarrito.cantidad}
             </div>
@@ -65,11 +66,16 @@ class Carrito {
             return previous + current.precioTotalProducto; 
         }, 0);
         let valorTotal = 
-        `<h4 >Total a pagar: ${sum}</h4>
+        `<h4 >Total a pagar:             ${Intl.NumberFormat('COP', {
+            style: 'currency',
+            minimumFractionDigits: 0,
+            currency: "COP"
+        }).format(sum)}</h4>
         <div class="row justify-content-md-center ">
             <button class="btn btn-info text-white w-100 mt-2 fw-semibold"
                 type="submit" onclick="compraDefinitiva()">Realizar compra</button>
         </div>`
         document.getElementById("totalProductos").innerHTML = valorTotal
+        console.clear;
     };
 }

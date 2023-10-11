@@ -48,9 +48,9 @@
 
                     </ul>
                     <div>
-                        <a data-bs-toggle="offcanvas" href="#offcanvasExample"
+                        <a data-bs-toggle="offcanvas" href="#ventanaFlotante"
                             class="btn btn-info btn-sm text-white fw-semibold me-2" role="button"
-                            aria-controls="offcanvasExample">Carrito de compras</a>
+                            aria-controls="offcanvasScrolling">Carrito de compras</a>
                     </div>
                     <div class="form-floating ">
                         <input class="form-control-sm" type="text" name="busqueda" id="busqueda" placeholder="Buscar">
@@ -60,40 +60,39 @@
             </div>
         </div>
         </div>
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
-            aria-labelledby="offcanvasExampleLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasExampleLabel">VitalFit</h5>
+        <div class="offcanvas offcanvas-end border-3 border-info" tabindex="-1" id="ventanaFlotante"
+            aria-labelledby="offcanvasScrollingLabel" data-bs-scroll="true" data-bs-backdrop="false">
+            <div class="offcanvas-header bg-info">
+                <h4 class="offcanvas-title fw-semibold text-white" id="offcanvasExampleLabel">Carrito de compras</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
                 <div class="text-center p-4 ">
-                    <h2>Carrito de compras</h2>
-                        <div class="row itemsCarrito">
-                            <div class="col-2">
-                                Cantidad
-                            </div>
-                            <div class="col-5">
-                                Producto
-                            </div>
-                            <div class="col-3">
-                                Total
-                            </div>
-                            <div class="col-2">
-                                Eliminar
-                            </div>
-                            <div id="carritoHTML">
+                    <div class="row itemsCarrito">
+                        <div class="col-2 fw-semibold">
+                            Cantidad
+                        </div>
+                        <div class="col-5 fw-semibold">
+                            Producto
+                        </div>
+                        <div class="col-3 fw-semibold">
+                            Total
+                        </div>
+                        <div class="col-2 fw-semibold">
+                            Eliminar
+                        </div>
+                        <hr>
+                        <div id="carritoHTML">
+                        </div>
+                        <hr>
+                        <div id="totalProductos"></div>
+                    </div>
                 </div>
-                <br>
-                <br>
-                <div id="totalProductos"></div>
-            </div>
-        </div>
     </header>
 
     <main>
         <div class="container ">
-            <div id="producto" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 text-center">
+            <div id="producto" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3 text-center">
             </div>
         </div>
         </div>
