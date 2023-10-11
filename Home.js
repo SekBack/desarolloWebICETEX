@@ -4,8 +4,10 @@ let productos = [
         nombre: "Producto 1",
         precio: 15000,
         imagen: "/producto/yogur.webp",
-        cantidad: 1,
-        precioTotalProducto: 0
+        cantidad: 1,  //variable usada para la cantidad de productos a comprar, se modifica mediante el carrito
+        precioTotalProducto: 0, //variable usada para calcular el total parcial por producto a comprar, se modifica mediante el carrito
+        cantidadDisponible: 0, //variable utilizada para gestionar el inventario
+        cantidadStock: 15 // cantidad del producto en stock
     },
     {
         id: 2,
@@ -13,7 +15,9 @@ let productos = [
         precio: 20000,
         imagen: "/producto/amino.webp",
         cantidad: 1,
-        precioTotalProducto: 0
+        precioTotalProducto: 0,
+        cantidadDisponible: 0,
+        cantidadStock: 15
     },
     {
         id: 3,
@@ -21,7 +25,9 @@ let productos = [
         precio: 120000,
         imagen: "/producto/D_NQ_NP_858135-MCO70739386175_072023-O.webp",
         cantidad: 1,   
-        precioTotalProducto: 0
+        precioTotalProducto: 0,
+        cantidadDisponible: 0,
+        cantidadStock: 15
     },
     {
         id: 4,
@@ -29,7 +35,9 @@ let productos = [
         precio: 84000,
         imagen: "/producto/creatina.webp",
         cantidad: 1,
-        precioTotalProducto: 0
+        precioTotalProducto: 0,
+        cantidadDisponible: 0,
+        cantidadStock: 15
     },
     {
         id: 5,
@@ -37,7 +45,9 @@ let productos = [
         precio: 15000,
         imagen: "/producto/pan.png",
         cantidad: 1,
-        precioTotalProducto: 0
+        precioTotalProducto: 0,
+        cantidadDisponible: 0,
+        cantidadStock: 15
     }
 ]
 
