@@ -1,0 +1,7 @@
+#quienSomosText {
+    text-align: justify;
+}
+
+#navIndex, #contactStyle {
+    --bs-bg-opacity: .4
+}
