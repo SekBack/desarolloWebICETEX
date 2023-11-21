@@ -4,9 +4,9 @@ class Carrito {
         this.itemsSeleccionados = [];
     }
 
-
     AgregarItem(id) {
-        this.itemsSeleccionados.push(this.productos[id]);
+        this.itemsSeleccionados.push(this.productos[id
+        ]);
         let result = this.itemsSeleccionados.reduce((acc, item) => {
             const obj = acc.find(o => o.id === item.id);
             if (obj) {

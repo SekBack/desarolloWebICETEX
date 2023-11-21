@@ -10,8 +10,8 @@ function NavIndex() {
             </div>
 
             <ul className="nav nav-pills">
-                <li className="nav-item fw-semibold"><a href="/Login.html" className="nav-link active" aria-current="page">Ingresar</a></li>
-                <li className="nav-item"><a href="/Logup.html" className="nav-link text-white">Registrate</a></li>
+                <li className="nav-item fw-semibold"><a href="/login" className="nav-link active" aria-current="page">Ingresar</a></li>
+                <li className="nav-item"><a href="/logup" className="nav-link text-white">Registrate</a></li>
 
             </ul>
 

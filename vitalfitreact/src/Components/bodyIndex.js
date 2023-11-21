@@ -6,11 +6,11 @@ function BodyIndex() {
                     <h1 className="text-body-emphasis">VitalFit</h1>
                     <h4>Aliado de tu cuerpo</h4>
                     <div className="d-inline-flex gap-2 mb-4 mt-2">
-                        <button onClick={console.log("Index")} className="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill"
+                        <button onClick={()=>{window.location = '/login'}} className="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill"
                             type="button">
                             Ingresar
                         </button>
-                        <button onClick={console.log("Index")} className="btn btn-outline-secondary btn-lg px-4 rounded-pill" type="button">
+                        <button onClick={()=>{window.location = '/logup'}} className="btn btn-outline-secondary btn-lg px-4 rounded-pill" type="button">
                             Registrate
                         </button>
                     </div>

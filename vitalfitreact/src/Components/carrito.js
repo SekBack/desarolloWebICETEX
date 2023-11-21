@@ -1,12 +1,11 @@
-import { useState } from "react";
+import Eshop from "./eshop";
 
 function Productos(props) {
-    const productConsolidados = {};
-    productConsolidados.map => (+)
+
     return (
-        <div className="row itemsCarrito border-bottom">
+        <div key={props.id} className="row itemsCarrito border-bottom">
             <div className="col-2">
-                Cantidad
+                {props.cantidad}
             </div>
             <div className="col-5">
                 {props.nombre}
@@ -16,16 +15,52 @@ function Productos(props) {
                     style: 'currency',
                     minimumFractionDigits: 0,
                     currency: "COP"
-                }).format(555555)}
+                }).format(props.totalProducto)}
             </div>
             <div className="col-2">
-                <button type="button" className="btn btn-danger btn-sm botonEliminar" onClick={()=>console.log("hola")}>Eliminar</button>
+                <button type="button" className="btn btn-danger btn-sm botonEliminar" onClick={() => console.log("hola")}>Eliminar</button>
             </div>
         </div>
     )
 }
 
 function Carrito(props) {
+
+
+    let productosConsolidados = props.selectedItems.reduce((acc, item) => {
+        const obj = acc.find(o => o.id === item.id);
+        if (obj) {
+            obj.cantidad++;
+            obj.totalProducto = obj.precio * obj.cantidad;
+        } else {
+            item.cantidad = 1;
+            item.totalProducto = item.precio;
+            console.log(item.precio)
+            acc.push(item);
+        }
+        return acc;
+    }, []);
+
+    let totalFinal = productosConsolidados.reduce((acc, producto) => {
+        return acc = acc + producto.totalProducto;
+    }, 0);
+
+    function pay() {
+        let venta = {
+            products: productosConsolidados,
+            total: totalFinal,
+        };
+
+        fetch("/pay", {
+            headers: {
+                "Content-type": "Application/json",
+            },
+            method: "POST",
+            body: JSON.stringify(venta)
+        })
+    alert("Compra realizada")
+    }
+
     return (
         <div className="offcanvas offcanvas-end border-3 border-info" tabIndex="-1" id="ventanaFlotante"
             aria-labelledby="offcanvasScrollingLabel" data-bs-scroll="true" data-bs-backdrop="false">
@@ -50,25 +85,25 @@ function Carrito(props) {
                         </div>
                         <hr />
                         <div id="carritoHTML">
-                        {props.selectedItems.map((item) =>
-                        <Productos
-                            id={item.id}
-                            nombre={item.nombre}
-                            precio={item.precio}
-                            descripcion={item.descripcion}
-                            imagen={item.imagen}
-                            add={props.setSelectedItems}>
-                        </Productos>)}
+                            {productosConsolidados.map((item) =>
+                                <Productos
+                                    id={item.id}
+                                    nombre={item.nombre}
+                                    precio={item.precio}
+                                    add={productosConsolidados}
+                                    cantidad={item.cantidad}
+                                    totalProducto={item.totalProducto}>
+                                </Productos>)}
                         </div>
                         <hr />
                         <div id="totalProductos"><h4 >Total a pagar:             {Intl.NumberFormat('COP', {
                             style: 'currency',
                             minimumFractionDigits: 0,
                             currency: "COP"
-                        }).format(props.total)}</h4>
+                        }).format(totalFinal)}</h4>
                             <div className="row justify-content-md-center ">
                                 <button className="btn btn-info text-white w-100 mt-2 fw-semibold"
-                                    type="submit" onClick={()=>console.log("Holax")}>Realizar compra</button>
+                                    type="submit" onClick={pay}>Realizar compra</button>
                             </div></div>
                     </div>
                 </div>

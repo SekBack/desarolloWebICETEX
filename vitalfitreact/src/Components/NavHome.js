@@ -2,7 +2,7 @@ function NavHome(props) {
     return (
         <div className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container">
-                <a href="/index.html" className="navbar-brand ">
+                <a href="/" className="navbar-brand ">
                     <strong>VitalFit</strong>
                 </a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
